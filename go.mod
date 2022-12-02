@@ -3,7 +3,6 @@ module github.com/lycorislove-ventures/lycoris
 go 1.18
 
 require (
-	github.com/cosmos/admin-module v0.0.0
 	github.com/cosmos/cosmos-sdk v0.45.7-0.20221104161803-456ca5663c5e
 	github.com/cosmos/ibc-go/v3 v3.0.0
 	github.com/cosmos/interchain-security v0.0.0-20221104204906-6c0d718d8c59
@@ -124,7 +123,6 @@ require (
 )
 
 replace (
-	github.com/cosmos/admin-module => github.com/Ethernal-Tech/admin-module v0.0.0-20221102105340-e693f4d379c3
 	github.com/cosmos/ibc-go/v3 => github.com/informalsystems/ibc-go/v3 v3.0.0-beta1.0.20220816140824-aba9c2f2b943
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 )
