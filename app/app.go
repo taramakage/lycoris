@@ -51,6 +51,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/slashing"
 	slashingkeeper "github.com/cosmos/cosmos-sdk/x/slashing/keeper"
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
+
+	nft "github.com/irisnet/irismod/modules/nft"
+	nftkeeper "github.com/irisnet/irismod/modules/nft/keeper"
+	nfttypes "github.com/irisnet/irismod/modules/nft/types"
+
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradekeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
@@ -78,7 +83,7 @@ import (
 	tmos "github.com/tendermint/tendermint/libs/os"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/lycorislove-ventures/lycoris/cmd"
+	"github.com/taramakage/lycoris/cmd"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 
@@ -112,6 +117,7 @@ var (
 		ica.AppModuleBasic{},
 		vesting.AppModuleBasic{},
 		ccvconsumer.AppModuleBasic{},
+		nft.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -121,6 +127,7 @@ var (
 		ibctransfertypes.ModuleName:                   {authtypes.Minter, authtypes.Burner},
 		ccvconsumertypes.ConsumerRedistributeName:     nil,
 		ccvconsumertypes.ConsumerToSendToProviderName: nil,
+		nfttypes.ModuleName:                           nil,
 	}
 )
 
@@ -171,6 +178,7 @@ type App struct {
 	ICAHostKeeper    icahostkeeper.Keeper
 	FeeGrantKeeper   feegrantkeeper.Keeper
 	ConsumerKeeper   ccvconsumerkeeper.Keeper
+	NFTKeeper        nftkeeper.Keeper
 
 	// make scoped keepers public for test purposes
 	ScopedIBCKeeper         capabilitykeeper.ScopedKeeper
@@ -212,6 +220,7 @@ func New(
 		authtypes.StoreKey, authz.ModuleName, banktypes.StoreKey, slashingtypes.StoreKey,
 		paramstypes.StoreKey, ibchost.StoreKey, upgradetypes.StoreKey, feegrant.StoreKey, evidencetypes.StoreKey,
 		ibctransfertypes.StoreKey, icahosttypes.StoreKey, capabilitytypes.StoreKey, ccvconsumertypes.StoreKey,
+		nfttypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -300,6 +309,11 @@ func New(
 		appCodec,
 		homePath,
 		app.BaseApp,
+	)
+
+	app.NFTKeeper = nftkeeper.NewKeeper(
+		appCodec,
+		keys[nfttypes.StoreKey],
 	)
 
 	// ... other modules keepers
@@ -405,6 +419,7 @@ func New(
 		transferModule,
 		icaModule,
 		consumerModule,
+		nft.NewAppModule(appCodec, app.NFTKeeper, app.AccountKeeper, app.BankKeeper),
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -425,6 +440,7 @@ func New(
 		icatypes.ModuleName,
 		authz.ModuleName,
 		feegrant.ModuleName,
+		nfttypes.ModuleName,
 		paramstypes.ModuleName,
 		vestingtypes.ModuleName,
 		ccvconsumertypes.ModuleName,
@@ -442,6 +458,7 @@ func New(
 		evidencetypes.ModuleName,
 		authz.ModuleName,
 		feegrant.ModuleName,
+		nfttypes.ModuleName,
 		paramstypes.ModuleName,
 		upgradetypes.ModuleName,
 		vestingtypes.ModuleName,
@@ -465,6 +482,7 @@ func New(
 		evidencetypes.ModuleName,
 		authz.ModuleName,
 		feegrant.ModuleName,
+		nfttypes.ModuleName,
 		paramstypes.ModuleName,
 		upgradetypes.ModuleName,
 		vestingtypes.ModuleName,

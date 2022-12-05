@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lycorislove-ventures/lycoris/app"
-	"github.com/lycorislove-ventures/lycoris/cmd"
+	"github.com/taramakage/lycoris/app"
+	"github.com/taramakage/lycoris/cmd"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/codec"

@@ -1,12 +1,12 @@
 package main
 
 import (
+	"github.com/taramakage/lycoris/cmd"
 	"os"
 
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
-	"github.com/lycorislove-ventures/lycoris/app"
-	"github.com/lycorislove-ventures/lycoris/cmd"
+	"github.com/taramakage/lycoris/app"
 )
 
 func main() {

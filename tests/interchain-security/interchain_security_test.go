@@ -10,9 +10,9 @@ import (
 	"github.com/cosmos/interchain-security/tests/e2e"
 	e2etestutil "github.com/cosmos/interchain-security/testutil/e2e"
 	icssimapp "github.com/cosmos/interchain-security/testutil/simapp"
-	appConsumer "github.com/lycorislove-ventures/lycoris/app"
-	"github.com/lycorislove-ventures/lycoris/cmd"
 	"github.com/stretchr/testify/suite"
+	appConsumer "github.com/taramakage/lycoris/app"
+	"github.com/taramakage/lycoris/cmd"
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 )

@@ -1,4 +1,4 @@
-module github.com/lycorislove-ventures/lycoris
+module github.com/taramakage/lycoris
 
 go 1.18
 
@@ -6,6 +6,7 @@ require (
 	github.com/cosmos/cosmos-sdk v0.45.7-0.20221104161803-456ca5663c5e
 	github.com/cosmos/ibc-go/v3 v3.0.0
 	github.com/cosmos/interchain-security v0.0.0-20221104204906-6c0d718d8c59
+	github.com/irisnet/irismod v1.6.0
 	github.com/spf13/cast v1.4.1
 	github.com/spf13/cobra v1.4.0
 	github.com/spf13/pflag v1.0.5

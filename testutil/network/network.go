@@ -25,9 +25,9 @@ import (
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	ccvconsumertypes "github.com/cosmos/interchain-security/x/ccv/consumer/types"
-	"github.com/lycorislove-ventures/lycoris/app"
-	"github.com/lycorislove-ventures/lycoris/cmd"
-	"github.com/lycorislove-ventures/lycoris/testutil"
+	"github.com/taramakage/lycoris/app"
+	"github.com/taramakage/lycoris/cmd"
+	"github.com/taramakage/lycoris/testutil"
 	types1 "github.com/tendermint/tendermint/abci/types"
 	tmtypes "github.com/tendermint/tendermint/types"
 )
