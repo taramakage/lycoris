@@ -35,3 +35,16 @@ lycorisd add-consumer-section
 ```
 lycorisd start
 ```
+
+## NFT Module
+
+```bash
+lycorisd tx nft issue takina --mint-restricted=false --update-restricted=false --keyring-backend file --from lyco
+
+lycorisd tx nft mint takina t001  --from lyco --keyring-backend file
+
+lycorisd q nft collection takina
+
+lycorisd q nft token takina t001
+
+```
